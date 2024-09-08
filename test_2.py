@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 
-def bilinear_interpolation(image, new_width, new_height):
+def bilinear_interpolation_expand(image, new_width, new_height):
     old_width, old_height = image.size
     old_pixels = np.array(image)
 
@@ -43,26 +43,21 @@ def bilinear_interpolation(image, new_width, new_height):
     return Image.fromarray(new_pixels)
 
 
-def compress_image(image_path, output_path, new_width, new_height):
+def expand_image(image_path, output_path, new_width, new_height):
     image = Image.open(image_path)
-    new_image = bilinear_interpolation(image, new_width, new_height)
+    new_image = bilinear_interpolation_expand(image, new_width, new_height)
     new_image.save(output_path)
 
 
 # Путь к исходному изображению
-source_image_path = '/Users/dmitrij/Desktop/1.jpeg'
+source_image_path = '/Users/dmitrij/Desktop/2.jpg'
 # Путь к новому изображению на рабочем столе
-desktop_path = os.path.join(os.path.expanduser("~"), "Desktop", "2.jpg")
+desktop_path = os.path.join(os.path.expanduser("~"), "Desktop", "3.jpg")
 
 # Новые размеры
-new_width = 400
-new_height = 300
+new_width = 4000
+new_height = 3000
 
-compress_image(source_image_path, desktop_path, new_width, new_height)
+expand_image(source_image_path, desktop_path, new_width, new_height)
 
-print(f"Изображение сохранено на рабочий стол как 'compressed_image.jpg'")
-
-# ('/Users/dmitrij/Desktop/main.jpeg')
-
-
-
+print(f"Изображение сохранено на рабочий стол как 'expanded_image.jpg'")
