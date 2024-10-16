@@ -9,7 +9,7 @@ img_new = img.crop((200, 100, 400, 300))
 
 np_new = np.asarray(img_new, dtype=int)
 
-size = 3 #поменять размер зума
+size = 9 #поменять размер зума
 
 def bi_inter(np_new, size):
   height, width = np_new.shape
