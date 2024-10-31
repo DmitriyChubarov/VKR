@@ -1,19 +1,17 @@
 from PIL import Image
-from urllib.request import urlopen
-import matplotlib.pyplot as plt
 import numpy as np
 
-img = Image.open(urlopen('https://i.ibb.co/9G57VHk/image.jpg'))
-img = img.convert('L')
-img_new = img.crop((200, 100, 400, 300))
+img = Image.open('/Users/dmitrij/Desktop/image_2.jpg').convert('L')
+size = 1.01 #поменять размер зума
+def bi_inter(image, size):
+  image = image.convert('L')
+  height, width = image.size
+  img_new = image.crop((height / 3, width / 3, 2 / 3 * height, 2 / 3 * width))
+  img_new = image
+  np_new = np.asarray(img_new, dtype=int)
 
-np_new = np.asarray(img_new, dtype=int)
-
-size = 9 #поменять размер зума
-
-def bi_inter(np_new, size):
   height, width = np_new.shape
-  new_height, new_width = height * size, width * size
+  new_height, new_width = int(height * size), int(width * size)
 
   np_new_inter = np.zeros((new_height, new_width))
 
@@ -34,13 +32,6 @@ def bi_inter(np_new, size):
 
   return np_new_inter.astype(np.uint8)
 
-img_new_inter = Image.fromarray(bi_inter(np_new, size))
+img_new_inter = Image.fromarray(bi_inter(img, size))
+img_new_inter.save('/Users/dmitrij/Desktop/image_2_1.01.jpg')
 
-plt.imshow(img, cmap='gray')
-plt.show()
-
-plt.imshow(img_new, cmap='gray')
-plt.show()
-
-plt.imshow(img_new_inter, cmap='gray')
-plt.show()

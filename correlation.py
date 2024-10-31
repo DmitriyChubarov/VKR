@@ -1,13 +1,19 @@
 from PIL import Image
 from urllib.request import urlopen
 import numpy as np
+import os
 
-img_1 = Image.open(urlopen('https://i.ibb.co/xXT9zLT/1.png'))
-img_1 = img_1.convert('L')
-img_2 = Image.open(urlopen('https://i.ibb.co/WyWPPNt/pc-2.jpg'))
-img_2 = img_2.convert('L')
-img_3 = Image.open(urlopen('https://i.ibb.co/Gkcp1T0/2.png'))
-img_3 = img_3.convert('L')
+# img_1 = Image.open(urlopen('https://i.ibb.co/xXT9zLT/1.png'))
+# img_1 = img_1.convert('L')
+# img_2 = Image.open(urlopen('https://i.ibb.co/WyWPPNt/pc-2.jpg'))
+# img_2 = img_2.convert('L')
+# img_3 = Image.open(urlopen('https://i.ibb.co/Gkcp1T0/2.png'))
+# img_3 = img_3.convert('L')
+
+img_1 = Image.open('/Users/dmitrij/Desktop/image_1.jpg').convert('L')
+img_2 = Image.open('/Users/dmitrij/Desktop/image_2_1.01_r.jpg').convert('L')
+
+
 
 def cor(x, y):
 
@@ -19,7 +25,7 @@ def cor(x, y):
 
     return ((numerator / denominator) + 1) / 2
 
-print(cor(img_1, img_1))
+print(cor(img_1, img_2))
 
 
 

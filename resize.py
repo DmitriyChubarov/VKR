@@ -2,10 +2,13 @@ from PIL import Image
 from urllib.request import urlopen
 import numpy as np
 
-img_1 = Image.open(urlopen('https://i.ibb.co/xXT9zLT/1.png'))
-img_1 = img_1.convert('L')
-img_3 = Image.open(urlopen('https://i.ibb.co/Gkcp1T0/2.png'))
-img_3 = img_3.convert('L')
+# img_1 = Image.open(urlopen('https://i.ibb.co/xXT9zLT/1.png'))
+# img_1 = img_1.convert('L')
+# img_3 = Image.open(urlopen('https://i.ibb.co/Gkcp1T0/2.png'))
+# img_3 = img_3.convert('L')
+
+img_1 = Image.open('/Users/dmitrij/Desktop/image_1.jpg').convert('L')
+img_2 = Image.open('/Users/dmitrij/Desktop/image_2_1.01.jpg').convert('L')
 
 def size(x,y):
     w1, h1 = x.size
@@ -41,7 +44,10 @@ def size(x,y):
 
     return x, y
 
-img_1_new, img_3_new = (size(img_1, img_3))
+img_1_new, img_2_new = (size(img_1, img_2))
 
-img_1_new.show()
-img_3_new.show()
+
+img_2_new.save('/Users/dmitrij/Desktop/image_2_1.01_r.jpg')
+
+# img_1_new.show()
+# img_2_new.show()
